@@ -32,13 +32,15 @@ namespace Hastane_yazilimi.Controllers
             }
             else
             {
-                return RedirectToAction("DoktorLogin", "Doktor");
+                return RedirectToAction("Index", "Doktor");
             }
 
         }
         public ActionResult DoktorListesi()
         {
-            var degerler = c.RandevuTables.Where(x => x.RandevuDurumu == true).ToList();
+            var doktor = (string)Session["KullaniciAd"];
+            var id = c.DoktorTables.Where(x => x.DoktorTC == doktor.ToString()).Select(y => y.DoktorId).FirstOrDefault();
+            var degerler = c.RandevuTables.Where(x => x.DoktorId == id).ToList();
             return View(degerler);
         }
     }

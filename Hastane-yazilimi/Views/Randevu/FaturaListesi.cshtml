@@ -1,12 +1,12 @@
 ﻿@using Hastane_yazilimi.Models
-@model List<RandevuTable>
-
+@model List<FaturaTable>
 @{
-    ViewBag.Title = "RandevuListesi";
+    ViewBag.Title = "FaturaListesi";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Randevu Listesi</h2>
+<h2>FaturaListesi</h2>
+
 
 <table class="table table-bordered">
     <tr>
@@ -18,15 +18,10 @@
     @foreach (var x in Model)
     {
         <tr>
-            <td>@x.RandevuNo</td>
-            <td>Hastaİsmi Gelicek</td>
-            <td>@x.RandevuTarihi</td>
-            <td>@x.Aciklama</td>
+            <td>@x.FaturaTutar</td>
+            <td>@x.FaturaTarihi</td>
         </tr>
     }
 </table>
 
 <td><a href="/" class="btn btn-primary">Ana Sayfaya Dön</a></td>
-
-
-

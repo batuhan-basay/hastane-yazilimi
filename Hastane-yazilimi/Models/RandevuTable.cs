@@ -18,6 +18,7 @@ namespace Hastane_yazilimi.Models
         public DoktorTable Doktor { get; set; }
         public bool RandevuDurumu { get; set; }
         public DateTime RandevuTarihi { get; set; }
+        public DateTime RandevuSaati { get; set; }
         public string Aciklama { get; set; }
         public int IslemId { get; set; }
         public IslemTable Islem { get; set; }

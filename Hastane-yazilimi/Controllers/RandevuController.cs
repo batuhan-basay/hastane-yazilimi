@@ -79,20 +79,28 @@ namespace Hastane_yazilimi.Controllers
             }
             else
             {
-                return RedirectToAction("HastaLogin", "Randevu");
+                return RedirectToAction("HastaGecmisLogin", "Randevu");
             }
 
 
         }
         public ActionResult RandevuListesi()
         {
-            var degerler = c.RandevuTables.Where(x => x.RandevuDurumu == false).ToList();
+            var hasta = (string)Session["KullaniciAd"];
+            var id = c.HastaTables.Where(x => x.HastaTC == hasta.ToString()).Select(y => y.HastaId).FirstOrDefault();
+            var degerler = c.RandevuTables.Where(x => x.HastaId == id).ToList();
             return View(degerler);
+
+            //var degerler = c.RandevuTables.Where(x => x.RandevuDurumu == false).ToList();
         }
         public ActionResult RandevuSil()
         {
-            var degerler = c.RandevuTables.Where(x => x.RandevuDurumu == true).ToList();
+            var hasta = (string)Session["KullaniciAd"];
+            var id = c.HastaTables.Where(x => x.HastaTC == hasta.ToString()).Select(y => y.HastaId).FirstOrDefault();
+            var degerler = c.RandevuTables.Where(x => x.HastaId == id).ToList();
             return View(degerler);
+
+            //var degerler = c.RandevuTables.Where(x => x.RandevuDurumu == true).ToList();
 
         }
         public ActionResult RandevuSilmek(int id)
@@ -103,6 +111,35 @@ namespace Hastane_yazilimi.Controllers
 
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public ActionResult Faturalar()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Faturalar(HastaTable hasta)
+        {
+            var bilgi = c.HastaTables.FirstOrDefault(x => x.HastaTC == hasta.HastaTC);
+            if (bilgi != null)
+            {
+                FormsAuthentication.SetAuthCookie(bilgi.HastaTC, false);
+                Session["KullaniciAd"] = bilgi.HastaTC.ToString();
+                return RedirectToAction("FaturaListesi", "Randevu");
+            }
+            else
+            {
+                return RedirectToAction("Faturalar", "Randevu");
+            }
+        }
 
+        public ActionResult FaturaListesi()
+        {
+            var hasta = (string)Session["KullaniciAd"];
+            var id = c.RandevuTables.Where(x => x.Hasta.HastaTC == hasta.ToString()).Select(y => y.FaturaId).FirstOrDefault();
+            var degerler = c.FaturaTables.Where(x => x.FaturaId == id).ToList();
+            return View(degerler);
+
+            //var degerler = c.RandevuTables.Where(x => x.RandevuDurumu == false).ToList();
+        }
     }
 }
