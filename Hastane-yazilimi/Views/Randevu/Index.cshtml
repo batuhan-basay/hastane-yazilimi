@@ -1,0 +1,47 @@
+﻿@model Hastane_yazilimi.Models.RandevuTable
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Randevu Al</h2>
+
+
+@using (Html.BeginForm("RandevuEkle", "Randevu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form class="form-group" method="post">
+        @Html.LabelFor(x => x.Hasta.HastaTC)
+        @Html.TextBoxFor(x => x.Hasta.HastaTC, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Hasta.HastaAd)
+        @Html.TextBoxFor(x => x.Hasta.HastaAd, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Hasta.HastaSoyad)
+        @Html.TextBoxFor(x => x.Hasta.HastaSoyad, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Hasta.Email)
+        @Html.TextBoxFor(x => x.Hasta.Email, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Hasta.Cinsiyet)
+        @Html.TextBoxFor(x => x.Hasta.Cinsiyet, new { @class = "form-control" })
+        <br />
+
+        @Html.LabelFor(x => x.Doktor.Poliklinik.Klinik.KlinikAd)
+        @Html.TextBoxFor(x => x.Doktor.Poliklinik.Klinik.KlinikAd, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Doktor.DoktorAd)
+        @Html.TextBoxFor(x => x.Doktor.DoktorAd, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.RandevuTarihi)
+        @Html.TextBoxFor(x => x.RandevuTarihi, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.IslemId)
+        @Html.TextBoxFor(x => x.IslemId, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.FaturaId)
+        @Html.TextBoxFor(x => x.FaturaId, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-info">Kaydet</button>
+    </form>
+}
+<td><a href="/" class="btn btn-primary">Ana Sayfaya Dön</a></td>

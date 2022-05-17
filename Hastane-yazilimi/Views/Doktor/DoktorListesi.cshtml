@@ -1,0 +1,29 @@
+﻿@using Hastane_yazilimi.Models
+@model List<RandevuTable>
+@{
+    ViewBag.Title = "DoktorListesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Doktor Randevu Listesi</h2>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>Randevu No</th>
+        <th>Hasta Adı Soyadı</th>
+        <th>Tarih</th>
+        <th>Açıklama</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.RandevuNo</td>
+            <td>Hasta İsmi Gelicek</td>
+            <td>@x.RandevuTarihi</td>
+            <td>@x.Aciklama</td>
+        </tr>
+    }
+</table>
+
+<td><a href="/" class="btn btn-primary">Ana Sayfaya Dön</a></td>

@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "HastaLogin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>HastaLogin</h2>
+
+
+<div class="agile-row">
+    <h3>Hasta Giriş</h3>
+    <div class="clear"></div>
+    <div class="login-agileits-top">
+        @using (Html.BeginForm("RandevuSil", "Randevu", FormMethod.Post))
+        {
+            <input type="text" class="name" name="HastaTC" Placeholder="TC'niz'" required="" />
+            <input type="text" class="name" name="HastaSoyad" Placeholder="Soyadınız" required="" />
+            <input type="submit" value="Giriş Yap">
+        }
+    </div>
+</div>
+<td><a href="/" class="btn btn-primary">Ana Sayfaya Dön</a></td>

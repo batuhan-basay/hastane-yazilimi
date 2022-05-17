@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="agile-row">
+    <h3>Doktor Giriş</h3>
+    <div class="clear"></div>
+    <div class="login-agileits-top">
+        @using (Html.BeginForm("DoktorListesi", "Doktor", FormMethod.Post))
+        {
+            <input type="text" class="name" name="DoktorTc" Placeholder="TC'niz'" required="" />
+            <input type="text" class="name" name="DoktorSoyad" Placeholder="Soyadınız" required="" />
+            <input type="submit" value="Giriş Yap">
+        }
+    </div>
+</div>
+<td><a href="/" class="btn btn-primary">Ana Sayfaya Dön</a></td>
